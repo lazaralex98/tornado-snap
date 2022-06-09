@@ -1,6 +1,6 @@
-const { promises: fs } = require('fs');
-const path = require('path');
-const mkdirp = require('mkdirp');
+import { promises as fs } from 'fs';
+import path from 'path';
+import mkdirp from 'mkdirp';
 
 main();
 

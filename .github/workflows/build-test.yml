@@ -32,6 +32,7 @@ jobs:
       - run: yarn --frozen-lockfile
       - run: yarn build
       - run: yarn lint
+      - run: yarn format:check
       - run: yarn test
       - name: Validate RC changelog
         if: ${{ startsWith(github.head_ref, 'release/') }}
@@ -45,4 +46,4 @@ jobs:
     needs:
       - build-lint-test
     steps:
-      - run: echo "Great success!"
+      - run: echo "Great success!" # is this Borat? :))
