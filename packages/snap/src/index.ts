@@ -86,9 +86,10 @@ export const clearData = async (): Promise<void> => {
 wallet.registerRpcMessageHandler(async (_originString, requestObject) => {
   switch (requestObject.method) {
     case 'storeData': {
-      // mock tornado note
-      const tornadoNote =
-        'tornado-eth-0.1-5-abc123abc123abc123abc123abc123abc123';
+      console.log('_originString', _originString);
+      console.log('requestObject', requestObject);
+
+      const { tornadoNote } = requestObject;
 
       const snapConfirm = await wallet.request({
         method: 'snap_confirm',
@@ -97,8 +98,7 @@ wallet.registerRpcMessageHandler(async (_originString, requestObject) => {
             prompt: 'Want to store your TornadoCash note?',
             description:
               'We are storing the TornadoCashs note in MetaMask as you have inputed it.',
-            textAreaContent:
-              'If you confirm this, the string that represents your TornadoCash will be store in MetaMask for you to use later.',
+            textAreaContent: `If you confirm this, the string ("${tornadoNote}") that represents your TornadoCash will be store in MetaMask for you to use later.`,
           },
         ],
       });

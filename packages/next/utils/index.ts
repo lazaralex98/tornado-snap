@@ -11,57 +11,39 @@ export const connect = async (ethereum: any) => {
   });
 };
 
-export const storeData = async (ethereum: any) => {
-  try {
-    const response = await ethereum.request({
-      method: "wallet_invokeSnap",
-      params: [
-        SNAP_ID,
-        {
-          method: "storeData",
-        },
-      ],
-    });
-    console.log(`happy that you stored this :)`);
-    alert(`happy that you stored this :)`);
-  } catch (err: any) {
-    console.error(err);
-    alert("Problem happened: " + err.message || err);
-  }
+export const storeData = async (ethereum: any, tornadoNote: string) => {
+  return await ethereum.request({
+    method: "wallet_invokeSnap",
+    params: [
+      SNAP_ID,
+      {
+        method: "storeData",
+        tornadoNote,
+      },
+    ],
+  });
 };
 
 export const fetchData = async (ethereum: any) => {
-  try {
-    const response = await ethereum.request({
-      method: "wallet_invokeSnap",
-      params: [
-        SNAP_ID,
-        {
-          method: "fetchData",
-        },
-      ],
-    });
-    console.log("fetched this: ", response);
-  } catch (err: any) {
-    console.error(err);
-    alert("Problem happened: " + err.message || err);
-  }
+  return await ethereum.request({
+    method: "wallet_invokeSnap",
+    params: [
+      SNAP_ID,
+      {
+        method: "fetchData",
+      },
+    ],
+  });
 };
 
 export const clearData = async (ethereum: any) => {
-  try {
-    const response = await ethereum.request({
-      method: "wallet_invokeSnap",
-      params: [
-        SNAP_ID,
-        {
-          method: "clearData",
-        },
-      ],
-    });
-    console.log("clear status", response);
-  } catch (err: any) {
-    console.error(err);
-    alert("Problem happened: " + err.message || err);
-  }
+  return await ethereum.request({
+    method: "wallet_invokeSnap",
+    params: [
+      SNAP_ID,
+      {
+        method: "clearData",
+      },
+    ],
+  });
 };

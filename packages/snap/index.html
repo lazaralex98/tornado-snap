@@ -28,6 +28,7 @@
     <br />
 
     <button class="connect">Connect</button>
+    <input type="text" name="tornadoNote" id="tornadoNote" />
     <button class="storeData">Store Data</button>
     <button class="fetchData">Fetch Data</button>
     <button class="clearData">Clear Data</button>
@@ -37,13 +38,16 @@
     const snapId = `local:${window.location.href}`;
 
     const connectButton = document.querySelector('button.connect');
-    const sendButton = document.querySelector('button.sendHello');
+    const tornadoNoteInput = document.getElementById('tornadoNote');
     const storeDataButton = document.querySelector('button.storeData');
     const fetchDataButton = document.querySelector('button.fetchData');
     const clearDataButton = document.querySelector('button.clearData');
 
     connectButton.addEventListener('click', connect);
-    storeDataButton.addEventListener('click', storeData);
+    storeDataButton.addEventListener('click', () => {
+      console.log('sending string:', tornadoNoteInput.value);
+      storeData(tornadoNoteInput.value);
+    });
     fetchDataButton.addEventListener('click', fetchData);
     clearDataButton.addEventListener('click', clearData);
 
@@ -58,7 +62,7 @@
       });
     }
 
-    async function storeData() {
+    async function storeData(tornadoNote) {
       try {
         const response = await ethereum.request({
           method: 'wallet_invokeSnap',
@@ -66,6 +70,7 @@
             snapId,
             {
               method: 'storeData',
+              tornadoNote,
             },
           ],
         });
