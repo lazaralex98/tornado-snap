@@ -1,4 +1,4 @@
-name: Build, Lint, and Test
+name: Build
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-lint-test:
-    name: Build, Lint, and Test
+    name: Build
     runs-on: ubuntu-20.04
     strategy:
       matrix:
@@ -31,17 +31,10 @@ jobs:
           key: yarn-cache-${{ runner.os }}-${{ steps.yarn-version.outputs.YARN_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn --frozen-lockfile
       - run: yarn build
-      - run: yarn test
-      - name: Validate RC changelog
-        if: ${{ startsWith(github.head_ref, 'release/') }}
-        run: yarn auto-changelog validate --rc
-      - name: Validate changelog
-        if: ${{ !startsWith(github.head_ref, 'release/') }}
-        run: yarn auto-changelog validate
   all-jobs-pass:
     name: All jobs pass
     runs-on: ubuntu-20.04
     needs:
-      - build-lint-test
+      - build
     steps:
       - run: echo "Great success!" # is this Borat? :))
