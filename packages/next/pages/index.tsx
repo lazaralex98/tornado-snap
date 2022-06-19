@@ -10,6 +10,18 @@ const navigation = [{ name: "Home", href: "#", current: true }];
 const Home: NextPage = () => {
   const [snapConnected, setSnapConnected] = useState<boolean>(false);
   const [note, setNote] = useState<string>("");
+  const [storedNote, setStoredNote] = useState<string>("");
+
+  const getStoredNote = async (ethereum: any) => {
+    const storedNote = (await fetchData(ethereum)).tornadoNote;
+    setStoredNote(storedNote);
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    const { ethereum } = window;
+    getStoredNote(ethereum);
+  }, []);
 
   return (
     <div>
@@ -41,7 +53,12 @@ const Home: NextPage = () => {
             <div className="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
               {/* Replace with your content */}
               <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-                <Form tornadoCashNote={note} setNote={setNote} />
+                <Form
+                  note={note}
+                  storedNote={storedNote}
+                  setNote={setNote}
+                  setStoredNote={setStoredNote}
+                />
               </div>
               {/* /End replace */}
             </div>
