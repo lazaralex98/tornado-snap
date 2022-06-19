@@ -1,5 +1,6 @@
-import { Disclosure } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Fragment } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -47,6 +48,16 @@ const Nav = ({ navigation }: { navigation: navigationItemsType }) => {
                     </div>
                   </div>
                 </div>
+                <div className="hidden md:block">
+                  <div className="ml-4 flex items-center md:ml-6">
+                    <button
+                      type="submit"
+                      className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                      Connect
+                    </button>
+                  </div>
+                </div>
                 <div className="-mr-2 flex md:hidden">
                   {/* Mobile menu button */}
                   <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -80,6 +91,16 @@ const Nav = ({ navigation }: { navigation: navigationItemsType }) => {
                   {item.name}
                 </Disclosure.Button>
               ))}
+            </div>
+            <div className="pt-4 pb-3 border-t border-gray-700">
+              <div className="flex items-center px-5">
+                <button
+                  type="submit"
+                  className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Connect
+                </button>
+              </div>
             </div>
           </Disclosure.Panel>
         </>
