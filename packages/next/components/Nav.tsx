@@ -1,6 +1,7 @@
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Fragment } from "react";
+import { connect } from "../utils";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -12,7 +13,22 @@ type navigationItemsType = {
   current: boolean;
 }[];
 
-const Nav = ({ navigation }: { navigation: navigationItemsType }) => {
+const Nav = ({
+  navigation,
+  snapConnected,
+  setSnapConnected,
+}: {
+  navigation: navigationItemsType;
+  snapConnected: boolean;
+  setSnapConnected: Function;
+}) => {
+  const connectWallet = async () => {
+    // @ts-ignore
+    const { ethereum } = window;
+    await connect(ethereum);
+    setSnapConnected(true);
+  };
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -50,12 +66,17 @@ const Nav = ({ navigation }: { navigation: navigationItemsType }) => {
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-4 flex items-center md:ml-6">
-                    <button
-                      type="submit"
-                      className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                      Connect
-                    </button>
+                    {snapConnected ? (
+                      ""
+                    ) : (
+                      <button
+                        onClick={connectWallet}
+                        type="submit"
+                        className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      >
+                        Connect
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div className="-mr-2 flex md:hidden">
@@ -94,12 +115,17 @@ const Nav = ({ navigation }: { navigation: navigationItemsType }) => {
             </div>
             <div className="pt-4 pb-3 border-t border-gray-700">
               <div className="flex items-center px-5">
-                <button
-                  type="submit"
-                  className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Connect
-                </button>
+                {snapConnected ? (
+                  ""
+                ) : (
+                  <button
+                    onClick={connectWallet}
+                    type="submit"
+                    className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Connect
+                  </button>
+                )}
               </div>
             </div>
           </Disclosure.Panel>

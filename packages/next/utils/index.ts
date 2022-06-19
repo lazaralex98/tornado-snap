@@ -1,4 +1,4 @@
-const SNAP_ID = `local:8000`;
+const SNAP_ID = `local:http://localhost:8000/`;
 
 export const connect = async (ethereum: any) => {
   await ethereum.request({

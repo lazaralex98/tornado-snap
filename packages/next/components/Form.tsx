@@ -1,4 +1,10 @@
-const Form = ({ tornadoCashNote }: { tornadoCashNote: string }) => {
+const Form = ({
+  tornadoCashNote,
+  setNote,
+}: {
+  tornadoCashNote: string;
+  setNote: Function;
+}) => {
   return (
     <form className="space-y-8 divide-y divide-gray-200">
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -27,7 +33,7 @@ const Form = ({ tornadoCashNote }: { tornadoCashNote: string }) => {
                   name="tornadoCashNote"
                   rows={3}
                   className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                  //   defaultValue={""}
+                  onChange={(e) => setNote(e.target.value)}
                   value={tornadoCashNote}
                 />
                 <p className="mt-2 text-sm text-gray-500">
