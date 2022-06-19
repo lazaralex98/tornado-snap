@@ -90,22 +90,32 @@ wallet.registerRpcMessageHandler(async (_originString, requestObject) => {
       const tornadoNote =
         'tornado-eth-0.1-5-abc123abc123abc123abc123abc123abc123';
 
-      const storedData = await storeData({ tornadoNote });
-      console.log('storedData', storedData);
+      const snapConfirm = await wallet.request({
+        method: 'snap_confirm',
+        params: [
+          {
+            prompt: 'Want to store your TornadoCash note?',
+            description:
+              'We are storing the TornadoCashs note in MetaMask as you have inputed it.',
+            textAreaContent:
+              'If you confirm this, the string that represents your TornadoCash will be store in MetaMask for you to use later.',
+          },
+        ],
+      });
+      if (snapConfirm !== true) {
+        throw new Error("User didn't confirmed");
+      }
 
-      return storedData;
+      return await storeData({ tornadoNote });
     }
 
     case 'fetchData': {
-      const fetchedData = await fetchData();
-      console.log('fetchedData', fetchedData);
-      return fetchedData;
+      return await fetchData();
     }
 
     case 'clearData': {
       await clearData();
-      console.log('clearedData');
-      return 'clearedData';
+      return true;
     }
 
     default: {

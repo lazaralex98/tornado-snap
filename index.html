@@ -69,6 +69,8 @@
             },
           ],
         });
+        console.log(`happy that you stored this :)`);
+        alert(`happy that you stored this :)`);
       } catch (err) {
         console.error(err);
         alert('Problem happened: ' + err.message || err);
@@ -86,6 +88,7 @@
             },
           ],
         });
+        console.log('fetched this: ', response);
       } catch (err) {
         console.error(err);
         alert('Problem happened: ' + err.message || err);
@@ -103,6 +106,7 @@
             },
           ],
         });
+        console.log('clear status', response);
       } catch (err) {
         console.error(err);
         alert('Problem happened: ' + err.message || err);
