@@ -4,15 +4,15 @@
   "description": "A MetaMask Snap template.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/snap-template.git"
+    "url": "https://github.com/lazaralex98/tornado-snap"
   },
   "source": {
-    "shasum": "qWiB0aR+6QdglHHJp0KDWM7OQm5ptKSbfwzo6AmmaCA=",
+    "shasum": "i07yssRyC5Uhol2TWrsg5FLMR4YYR20m0EK50p/FBRM=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "images/icon.svg",
-        "packageName": "@metamask/template-snap",
+        "packageName": "snap",
         "registry": "https://registry.npmjs.org/"
       }
     }
@@ -20,7 +20,8 @@
   "initialPermissions": {
     "snap_confirm": {},
     "endowment:network-access": {},
-    "snap_getBip44Entropy_60": {}
+    "snap_getBip44Entropy_60": {},
+    "snap_manageState": {}
   },
   "manifestVersion": "0.1"
 }

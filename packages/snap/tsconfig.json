@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    }
+  },
+  "include": ["src"],
+  "files": ["../../node_modules/@metamask/snap-types/global.d.ts"]
+}
