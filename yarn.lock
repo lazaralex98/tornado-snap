@@ -1593,10 +1593,10 @@
     ses "^0.15.15"
     stream-browserify "^3.0.0"
 
-"@metamask/key-tree@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/key-tree/-/key-tree-3.0.0.tgz#ff68eb9fa55915194cc4789b22074ea7d2e88b42"
-  integrity sha512-b08ZVLlANodobh5IBk346GnbI54HQRJ27RwC5+kTGS7DBh/FwidQNS6lk9RidlllLdNtW1TZ5exXwEtS1TnJQw==
+"@metamask/key-tree@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@metamask/key-tree/-/key-tree-3.0.1.tgz#e59b6c9c124c74382477f51a389815e849a16de7"
+  integrity sha512-CcpbQua96/CF+KKItrfw9Y6azrlkzFhoVAkyfUl7iq5qldA8xi4CilNjzIqnK8YJcLU44d7nRs5i5/9atY4Beg==
   dependencies:
     bip39 "^3.0.4"
     keccak "^3.0.2"
