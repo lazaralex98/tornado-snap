@@ -69,6 +69,6 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "@metamask/key-tree": "3.0.0"
+    "@metamask/key-tree": "4.0.0"
   }
 }
